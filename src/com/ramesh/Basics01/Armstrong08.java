@@ -1,5 +1,7 @@
 package com.ramesh.Basics01;
 
+import java.util.Scanner;
+
 public class Armstrong08 {
     public static void main(String[] args) {
 //        To find Armstrong Number between two given number.
@@ -10,24 +12,38 @@ public class Armstrong08 {
 //       2. count number of digits.
 //        3. power individual digits and sum all the digits.
 
-        int num = 123;
-        int rem;
-        int i = 0;
-        int sum = 0;
-        
-        while (i < 3) {
-            double cube = 0;
-            rem = num % 10;
-            System.out.println("rem = " + rem);
-            cube = Math.pow(rem, 3);
-            num = num / 10;
-            System.out.println(cube);
-            sum += cube;
-            System.out.printf("I = " + sum);
-            i++;
+        Scanner input = new Scanner(System.in);
+        System.out.printf("Enter a number: ");
+        int num = input.nextInt();
 
+        int originalNum = num;
+
+
+//        to count length of a given number
+        int length = 0;
+        int tempNum = num;
+        while (tempNum != 0) {
+            length++;
+            tempNum = tempNum / 10;
         }
 
+        int sum = 0;
+        int rem;
+        while (num != 0) {
+            rem = num % 10;
+
+            int pow = (int) Math.pow(rem, length);
+            num = num / 10;
+
+            sum = sum + pow;
+        }
+
+
+        if (sum == originalNum) {
+            System.out.println(originalNum + " is an armstrong number.");
+        } else {
+            System.out.println(originalNum + " is not an armstrong number.");
+        }
 
     }
 }
